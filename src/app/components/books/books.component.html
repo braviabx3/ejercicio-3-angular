@@ -1,0 +1,9 @@
+<h2>Programa de Lista de Libros</h2>
+
+<ul *ngIf="isShowing">
+  <ng-container *ngFor="let singlebook of books; let i=index">
+
+    <app-book (bookEmitter)="addToCar($event)" [book]="singlebook"></app-book>
+
+  </ng-container>
+</ul>

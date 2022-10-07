@@ -1,0 +1,10 @@
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list__book {
+  text-overflow: ellipsis;
+  width: 25%;
+  text-align: center;
+}
