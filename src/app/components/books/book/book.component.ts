@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from 'src/app/models/Book';
+import { CartService } from '../../cart/cart.service';
+
 
 @Component({
   selector: 'app-book',
@@ -7,16 +9,14 @@ import { Book } from 'src/app/models/Book';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
+
   @Input() book: Book = {} as Book;
-  @Output() bookEmitter = new EventEmitter<Book>();
 
-  addToCard() {
-    this.bookEmitter.emit(this.book);
+  constructor(private cartService: CartService) { }
+
+  ngOnInit(): void { }
+
+  addToCart() {
+    this.cartService.add(this.book);
   }
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
