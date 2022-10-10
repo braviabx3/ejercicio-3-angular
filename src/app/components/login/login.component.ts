@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    alert(this.form);
+    console.log(this.form);
   }
-
 }

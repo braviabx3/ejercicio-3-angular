@@ -1,20 +1,34 @@
 <div class="flex m-auto h-screen justify-center">
-  <form class="p-4 rounded-lg border-4 m-auto">
+  <form (ngSubmit)="submit()" #myForm="ngForm" class="p-4 rounded-lg border-4 m-auto">
     <h1 class="text-center text-xl">Registro</h1>
     <div class="my-5 w-full">
       <label for="email">Correo Electronico</label>
-      <input type="email" id="email" placeholder="Ingresar Correo" class="p-2 rounded w-full border-2">
+      <input type="email" id="email" placeholder="Ingresar Correo" class="p-2 rounded w-full border-2" name="email"
+        [(ngModel)]="form.email" #email="ngModel" required>
+    </div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="p-2 bg-red-300 text-red-800 rounded">
+      El campo de correo electronico está vacio
     </div>
     <div class="my-5 w-full">
       <label for="password">Contraseña</label>
-      <input type="password" id="password" placeholder="Ingresar Contraseña" class="p-2 rounded w-full border-2">
+      <input type="password" id="password" placeholder="Ingresar Contraseña" class="p-2 rounded w-full border-2"
+        name="password" [(ngModel)]="form.password" #password="ngModel" required>
+    </div>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="p-2 bg-red-300 text-red-800 rounded">
+      El campo de contraseña está vacio
     </div>
     <div class="my-5 w-full">
-      <label for="password">Confirmar Contraseña</label>
-      <input type="password" id="password" placeholder="Confirmar Contraseña" class="p-2 rounded w-full border-2">
+      <label for="confirm_password">Confirmar Contraseña</label>
+      <input type="text" id="confirm_password" class="p-2 rounded w-full border text-sm" placeholder="Confirm Password"
+        [(ngModel)]="form.confirm_password" name="confirm_password" #confirm_password="ngModel" required>
+    </div>
+    <div *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)"
+      class="p-2 bg-red-300 text-red-800 rounded">
+      El campo de confirmación de contraseña está vacio
     </div>
     <div class="my-5 w-full">
-      <input type="submit" class="p-2  w-full bg-purple-600 text-white hover:bg-purple-900 rounded ">
+      <input type="submit" [disabled]="myForm.form.invalid"
+        class="p-2  w-full bg-purple-600 text-white hover:bg-purple-900 rounded ">
     </div>
   </form>
 </div>
