@@ -1,6 +1,14 @@
 <div class="flex m-auto h-screen justify-center">
   <form (ngSubmit)="submit()" #myForm="ngForm" class="p-4 rounded-lg border-4 m-auto">
     <h1 class="text-center text-xl">Registro</h1>
+    <!--     <div class="my-5 w-full">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" placeholder="Ingresar un nombre" class="p-2 rounded w-full border-2" name="name"
+        [(ngModel)]="form.name" #name="ngModel" required>
+    </div>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="p-2 bg-red-300 text-red-800 rounded">
+      El campo de nombre está vacio
+    </div> -->
     <div class="my-5 w-full">
       <label for="email">Correo Electronico</label>
       <input type="email" id="email" placeholder="Ingresar Correo" class="p-2 rounded w-full border-2" name="email"
@@ -26,9 +34,20 @@
       class="p-2 bg-red-300 text-red-800 rounded">
       El campo de confirmación de contraseña está vacio
     </div>
+    <!--     <div>
+      <label for="">Admin </label>
+      <input type="checkbox">
+    </div> -->
     <div class="my-5 w-full">
-      <input type="submit" [disabled]="myForm.form.invalid"
-        class="p-2  w-full bg-purple-600 text-white hover:bg-purple-900 rounded ">
+      <button type="submit" [disabled]="myForm.form.invalid"
+        class="p-2  w-full bg-purple-600 text-white hover:bg-purple-900 rounded">
+        <ng-container *ngIf="isLoading()">
+          Loading ...
+        </ng-container>
+        <ng-container *ngIf="!isLoading()">
+          Enviar
+        </ng-container>
+      </button>
     </div>
   </form>
 </div>

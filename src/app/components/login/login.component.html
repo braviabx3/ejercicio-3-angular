@@ -18,8 +18,15 @@
       El campo de contraseña está vacio
     </div>
     <div class="my-5 w-full">
-      <input type="submit" [disabled]="myForm.form.invalid"
-        class="p-2  w-full bg-purple-600 text-white hover:bg-purple-900 rounded ">
+      <button type="submit" [disabled]="myForm.form.invalid"
+        class="p-2  w-full bg-purple-600 text-white hover:bg-purple-900 rounded">
+        <ng-container *ngIf="isLoading()">
+          Loading ...
+        </ng-container>
+        <ng-container *ngIf="!isLoading()">
+          Enviar
+        </ng-container>
+      </button>
     </div>
   </form>
 </div>

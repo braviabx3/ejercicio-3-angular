@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginForm } from 'src/app/models/Authenticator';
+import { AuthenticatorService } from 'src/app/authenticator/authenticator.service';
 
 @Component({
   selector: 'app-login',
@@ -7,18 +8,18 @@ import { LoginForm } from 'src/app/models/Authenticator';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   form: LoginForm = {
     email: '',
     password: ''
   };
+  constructor(private authenticatorService: AuthenticatorService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   submit() {
-    console.log(this.form);
+    this.authenticatorService.login(this.form);
+  }
+  isLoading() {
+    return this.authenticatorService.isLoading;
   }
 }

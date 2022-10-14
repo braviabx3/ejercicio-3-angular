@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [AppComponent, CartComponent, HeaderComponent],
-  imports: [BrowserModule, BooksModule, AppRoutingModule, AuthenticatorModule],
+  imports: [BrowserModule, BooksModule, AppRoutingModule, AuthenticatorModule, ReactiveFormsModule, FormsModule],
   bootstrap: [AppComponent],
 })
 
